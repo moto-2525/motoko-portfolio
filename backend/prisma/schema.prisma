@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/* 既存 */
+model Contact {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model Image {
+  id  Int    @id @default(autoincrement())
+  url String
+}
+
+/* 🔥 新規追加 — トップページ管理用 */
+model HomeContent {
+  id        Int      @id @default(autoincrement())
+  title     String                    // Motoko Yoshikawa
+  subtitle  String?                   // Web Developer / Portfolio✨
+  imageUrl  String?                   // プロフィール画像URL（あとで使える）
+  updatedAt DateTime @updatedAt
+}
+
+/* 🔥 Skills用 */
+model Skill {
+  id   Int    @id @default(autoincrement())
+  name String // JavaScript / Next.js / Node.js...
+}
+
+/* 🔥 Works用 */
+model Work {
+  id       Int    @id @default(autoincrement())
+  title    String // section3-4 など
+  url      String // GitHubリンク
+  summary  String? // 任意の説明文
+  imageUrl String? // 必要なら
+}
