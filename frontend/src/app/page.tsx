@@ -28,13 +28,17 @@ export default function Home() {
       {/* 🌟 Profile */}
       <section className="flex flex-col items-center text-center gap-4">
         {/* 🔥 Firebaseアップロード画像を表示！ */}
-        <Image
-          src={home.imageUrl || '/profile.jpg'}
-          alt="profile"
-          width={140}
-          height={140}
-          className="rounded-full shadow-lg object-cover"
-        />
+        {home.imageUrl ? (
+          <Image
+            src={home.imageUrl || '/no-image.png'}
+            alt="profile"
+            width={140}
+            height={140}
+            className="rounded-full shadow-lg object-cover"
+          />
+        ) : (
+          <p className="text-gray-400 text-sm mt-4">画像未設定</p>
+        )}
 
         <h1 className="text-4xl font-bold">{home.title}</h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-400">

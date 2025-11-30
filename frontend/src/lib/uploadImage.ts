@@ -1,4 +1,9 @@
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject,
+} from 'firebase/storage';
 import { storage } from '../firebase';
 
 // 画像アップロード → URL返す
@@ -36,4 +41,22 @@ export async function uploadProfileImage(
   }
 
   return url;
+}
+
+// --------------------------------------
+// 🗑 Firebase Storage から画像削除する関数
+// --------------------------------------
+export async function deleteImage(imageUrl: string) {
+  try {
+    // 画像URLからストレージのパスだけ抽出
+    const path = decodeURIComponent(imageUrl.split('/o/')[1].split('?')[0]);
+    const imageRef = ref(storage, path);
+
+    await deleteObject(imageRef);
+    console.log('🗑 画像削除成功:', path);
+    return true;
+  } catch (err) {
+    console.error('❌ 画像削除失敗:', err);
+    return false;
+  }
 }
