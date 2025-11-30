@@ -28,6 +28,26 @@ app.get('/api/home', async (req, res) => {
   }
 });
 
+// 🔥 画像URL更新API
+app.post('/api/home/update-image', async (req, res) => {
+  try {
+    const { imageUrl } = req.body;
+    if (!imageUrl)
+      return res.status(400).json({ error: 'imageUrl が必要です' });
+
+    const updated = await prisma.homeContent.update({
+      where: { id: 1 }, // HomeContentが1行ならID=1固定
+      data: { imageUrl },
+    });
+
+    res.json(updated);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: '画像URL更新に失敗しました', details: error });
+  }
+});
+
 /* ===========================
    🔥 Skills API
 ===========================*/

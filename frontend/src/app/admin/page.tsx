@@ -37,6 +37,14 @@ export default function AdminPage() {
       {/* 管理メニュー */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-xl">
         <Link
+          href="/admin/home"
+          className="block p-5 rounded-xl border bg-white shadow hover:shadow-md hover:-translate-y-1
+             transition flex flex-col items-center text-center font-semibold"
+        >
+          🖼 プロフィール画像管理
+          <span className="text-sm text-gray-500 mt-1">Home画像の変更</span>
+        </Link>
+        <Link
           href="/admin/contact"
           className="block p-5 rounded-xl border bg-white shadow hover:shadow-md hover:-translate-y-1
                      transition flex flex-col items-center text-center font-semibold"

@@ -27,13 +27,15 @@ export default function Home() {
     <main className="min-h-screen bg-zinc-50 dark:bg-black px-6 py-16 flex flex-col items-center">
       {/* 🌟 Profile */}
       <section className="flex flex-col items-center text-center gap-4">
+        {/* 🔥 Firebaseアップロード画像を表示！ */}
         <Image
-          src="/profile.jpg"
+          src={home.imageUrl || '/profile.jpg'}
           alt="profile"
           width={140}
           height={140}
-          className="rounded-full shadow-lg"
+          className="rounded-full shadow-lg object-cover"
         />
+
         <h1 className="text-4xl font-bold">{home.title}</h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-400">
           {home.subtitle}
