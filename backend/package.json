@@ -9,7 +9,7 @@
     "lint": "eslint . --ext .ts"
   },
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node src/prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
